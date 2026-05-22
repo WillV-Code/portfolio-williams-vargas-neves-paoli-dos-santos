@@ -47,7 +47,6 @@ O projeto foi construído utilizando os recursos nativos do Python 3.10+, explor
    ```bash
    git clone [https://github.com/WillV-Code/portfolio-williams-vargas-neves-paoli-dos-santos.git](https://github.com/WillV-Code/portfolio-williams-vargas-neves-paoli-dos-santos.git)
 
-```
  2. Acesse a pasta do projeto:
    ```bash
    cd portfolio-williams-vargas-neves-paoli-dos-santos
