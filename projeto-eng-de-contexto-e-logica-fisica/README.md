@@ -71,6 +71,7 @@ Diferente de sistemas puramente abstratos, estes scripts aplicam a lógica compu
 ## 👤 Autor
  * **Williams Vargas Neves Paoli dos Santos**
  * GitHub: WillV-Code
+
 *Projeto focado na aplicação prática de lógica física, modelagem de contexto ambiental e estruturação algorítmica de problemas complexos.*
 ---
 [Voltar ao perfil](https://github.com/WillV-Code)
