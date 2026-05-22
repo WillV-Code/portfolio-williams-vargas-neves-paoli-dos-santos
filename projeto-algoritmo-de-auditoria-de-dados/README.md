@@ -1,26 +1,57 @@
-# 💰 Sistema de Análise e Segurança de Vendas
+# 💰 Sistema de Auditoria e Segurança de Vendas
 
 ## 📝 Descrição do Projeto
-Este projeto consiste em um sistema de monitoramento de vendas em tempo real. O objetivo principal é garantir a integridade dos dados e o controle financeiro, identificando discrepâncias e aplicando quarentenas automáticas quando a média de vendas ultrapassa limites de segurança predefinidos.
+Este projeto é um script interativo em Python desenvolvido para auditoria, monitoramento e validação de dados de vendas. O sistema atua na garantia da integridade financeira, calculando médias de transações, disparando alertas de quarentena automatizados e identificando *outliers* (discrepâncias estatísticas) que demandam revisão manual. 
 
-Desenvolvido para facilitar a auditoria manual, o sistema detecta valores atípicos (outliers) e permite que o gestor ajuste os parâmetros de segurança dinamicamente durante a execução.
+Além disso, o script oferece uma interface via terminal para que o auditor possa gerenciar e redefinir dinamicamente os parâmetros de segurança do sistema durante a execução.
+
+---
 
 ## 🚀 Tecnologias Utilizadas
 * **Linguagem:** Python 3.x
-* **Conceitos:** Lógica de programação, funções globais, tratamento de inputs e validação de dados.
-* **Ferramentas:** Google Colab / Jupyter Notebook
+* **Ambientes de Execução:** Google Colab, PyCharm ou qualquer terminal compatível com Python 3.
+* **Paradigma:** Programação Estruturada e Modular.
+
+---
 
 ## 📊 Funcionalidades
-* **Cálculo de Média:** Processamento instantâneo da média das vendas inseridas.
-* **Quarentena Automática:** Alerta visual caso a média ultrapasse o limite crítico.
-* **Detecção de Discrepância:** Identificação de vendas individuais que excedem em 5x a média calculada.
-* **Ajuste Dinâmico:** Interface interativa para alteração do limite de segurança (`limite_seguranca`).
+* **Entrada de Dados Validada:** Coleta interativa de valores para um lote de 3 vendas.
+* **Cálculo de Média Global:** Processamento e exibição instantânea da média aritmética das vendas informadas.
+* **Mecanismo de Quarentena:** Alerta visual crítico (`SISTEMA EM QUARENTENA`) acionado caso a média das vendas ultrapasse o teto de segurança predefinido.
+* **Detecção de Outliers:** Identificação automática de desvios padrão (vendas individuais com valor 5 vezes maior que a média do lote), sugerindo revisão manual.
+* **Ajuste de Parâmetros em Tempo Real:** Permite ao operador alterar dinamicamente a variável global de limite de segurança (`limite_seguranca`) caso alguma venda individual atinja o teto estipulado.
+* **Inspeção de Tipagem:** Exibição final detalhada dos valores armazenados e seus respectivos tipos de dados na memória.
+
+---
 
 ## 🔧 Como Executar
-1. Clone o repositório: `git clone https://github.com/seu-usuario/nome-do-repositorio.git`
-2. Navegue até o diretório do projeto: `cd nome-do-repositorio`
-3. (Opcional) Instale as dependências caso existam: `pip install -r requirements.txt`
-4. Execute o notebook no Google Colab ou Jupyter localmente.
+
+### Pré-requisitos
+* Ter o Python 3.x instalado em sua máquina.
+
+### Passo a Passo
+
+1. **Clone o repositório:**
+   ```bash
+   git clone [https://github.com/seu-usuario/nome-do-repositorio.git](https://github.com/seu-usuario/nome-do-repositorio.git)
+
+```
+ 2. **Navegue até o diretório do projeto:**
+   ```bash
+   cd projeto-algoritmo-de-auditoria-de-dados
+   
+   ```
+ 3. **Execute o script:**
+   ```bash
+   python auditoria-de-dados.py
+   
+   ```
+> 💡 **Nota de Compatibilidade:** O script também pode ser importado e executado perfeitamente em ambientes de notebook como o **Google Colab** ou **Jupyter Notebook**, bastando colar o código em uma célula de execução.
+> 
+## 🛠️ Estrutura do Código
+ * limite_seguranca: Variável de controle global inicializada em 10000.
+ * analisar_vendas(): Função principal responsável pela lógica de negócio, cálculo de métricas e interface de decisão de alteração de limites.
+ * vendas: Lista dinâmica utilizada para o armazenamento e persistência dos dados coletados..
 
 ---
 [Voltar ao perfil](https://github.com/WillV-Code)
