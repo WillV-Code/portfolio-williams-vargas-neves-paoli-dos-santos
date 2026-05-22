@@ -33,7 +33,7 @@ Além disso, o script oferece uma interface via terminal para que o auditor poss
 
 1. **Clone o repositório:**
    ```bash
-   git clone [https://github.com/seu-usuario/nome-do-repositorio.git](https://github.com/seu-usuario/nome-do-repositorio.git)
+   git clone [https://github.com/WillV-Code/portfolio-williams-vargas-neves-paoli-dos-santos.git]
 
  2. **Navegue até o diretório do projeto:**
    ```bash
