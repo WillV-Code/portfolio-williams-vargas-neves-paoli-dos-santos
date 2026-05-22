@@ -1,37 +1,77 @@
-# 🏗️ Engenharia de Contexto e Lógica Física
+# 🌍 Engenharia de Contexto e Lógica Física (Python)
 
-## 📝 Descrição do Projeto
-Este projeto demonstra como a programação pode ser utilizada para mapear e resolver desafios físicos do cotidiano. Através de algoritmos de **Simulação de Fuga** e **Análise de Microclima Urbano**, o sistema transforma variáveis do ambiente — como portas trancadas, temperatura e qualidade do ar — em dados processáveis para tomada de decisão eficiente[cite: 6, 7].
+[![Python Version](https://img.shields.io/badge/python-3.x-blue.svg)](https://www.python.org/)
+[![Status](https://img.shields.io/badge/status-concluído-brightgreen.svg)]()
 
-O objetivo é mostrar que problemas grandes tornam-se menos complexos quando divididos em pequenas partes lógicas, transformando eventos caóticos em projetos organizados e testáveis[cite: 8].
+## 📖 Sobre o Projeto
+Este repositório reúne um conjunto de algoritmos desenvolvidos em Python focados em **Engenharia de Contexto e Lógica Física**. O objetivo central é traduzir variáveis, restrições e cenários do mundo real em dados estruturados que o computador consiga interpretar de forma exata. 
 
-## 🚀 Tecnologias e Conceitos
-*   **Simulação de Estado:** Uso de variáveis para monitorar a posição do agente, inventário (chaves) e níveis de energia[cite: 6].
-*   **Lógica de Condicional Crítica:** Aplicação de estruturas `if/else` para definir rotas alternativas caso um caminho esteja bloqueado[cite: 6, 8].
-*   **Análise de Dados Ambientais:** Integração de métricas de temperatura, umidade e Índice de Qualidade do Ar (IQAr) para calcular o conforto urbano[cite: 7].
-*   **Modularização e Funções Auxiliares:** Uso de funções específicas para converter valores brutos em categorias compreensíveis (ex: IQAr para "Bom", "Moderado" ou "Ruim")[cite: 7].
+O projeto é composto por duas soluções principais:
+1. **Algoritmo de Microclima Local:** Analisa dados meteorológicos e de qualidade do ar de pontos urbanos específicos, calculando um índice composto de conforto.
+2. **Simulador de Saída Eficiente (Evacuação):** Modela um agente inteligente tentando escapar de um ambiente complexo com restrição de energia, lidando com obstáculos como portas trancadas e fechaduras de múltiplas voltas.
 
-## 📊 Funcionalidades e Regras de Negócio
+> 🧠 **Filosofia do Projeto:** "Problemas grandes ficam menos complexos se os dividimos em pequenas partes. A vida deixa de ser um evento caótico e passa a parecer um projeto que se pode organizar, testar e melhorar a cada dia, um comando por vez.
 
-### 1. 🏃 Simulador de Saída de Fuga
-O algoritmo gerencia a evacuação de um ambiente através de uma lista de locais e estados físicos[cite: 6]:
-*   **Gestão de Recursos:** O agente consome energia a cada movimento e deve encontrar chaves para abrir portas trancadas[cite: 6].
-*   **Lógica de Persistência:** Implementação de "voltas" obrigatórias em áreas específicas (ex: escadas) antes de progredir para a saída final[cite: 6].
-*   **Resultado Binário:** O sistema valida o sucesso (fuga concluída) ou falha (exaustão de energia)[cite: 6].
+---
 
-### 2. 🌡️ Algoritmo de Microclima Local
-Analisa o bem-estar em diferentes pontos da cidade (Praças, Estações de Metrô) em períodos distintos (Manhã/Noite)[cite: 7]:
-*   **Pontuação de Conforto:** Atribui notas de 0 a 10 para temperatura, umidade e ar, gerando uma média final de "Conforto Urbano"[cite: 7].
-*   **Categorização por Match/Case:** Utiliza a estrutura `match/case` para fornecer feedbacks detalhados sobre a salubridade do ar e alertas de saúde[cite: 7].
+## 🚀 Funcionalidades
 
-## 🔧 Estrutura do Pensamento Algorítmico
-A transição da observação comum para a lógica física segue três pilares[cite: 8]:
-1.  **Decomposição:** Ver um local não como um todo, mas como um conjunto de dados (número de pessoas, obstáculos, metros até a saída)[cite: 8].
-2.  **Clareza de Passos:** O computador não adivinha; ele exige comandos exatos. Isso reflete na organização pessoal de tarefas e na explicação clara de processos[cite: 8].
-3.  **Previsibilidade:** Estar sempre "um passo à frente" ao definir condições: "Se o corredor A estiver bloqueado, vá pelo corredor B"[cite: 8].
+### 1. Sistema de Monitoramento de Microclima Urbano
+- **Ingestão de Dados Multicontexto:** Processamento de dados climáticos reais extraídos de canais meteorológicos (*Weather Channel*) estruturados por turnos (Manhã e Noite).
+- **Mapeamento de Métricas Físicas:** Classificação de Temperatura (Frio, Quente, Muito Quente) e Umidade (Sol, Nublado, Chuvoso, Muito Chuvoso).
+- **Análise Avançada da Qualidade do Ar (IQAr):** Uso de estruturas condicionais modernas (`match/case`) para categorizar a qualidade do ar em Boa, Moderada ou Ruim, disparando alertas de saúde críticos para cenários de insalubridade.
+- **Métrica de Conforto Urbano:** Algoritmo ponderado que normaliza as pontuações de temperatura, umidade e IQAr para gerar uma nota final de 0 a 10 para a localidade.
 
-## 🧠 Reflexão de Desenvolvimento
-A maior lição desta engenharia é que a vida deixa de ser um evento caótico e passa a parecer um projeto que pode ser organizado, testado e melhorado[cite: 8]. O desafio não está na complexidade do problema em si, mas em como simplificá-lo em partes menores para que a lógica possa encontrar o caminho mais eficiente para a "saída"[cite: 8].
+### 2. Simulador de Evacuação e Fuga Eficiente
+- **Mapeamento de Ambientes Dinâmicos:** Representação espacial de salas, corredores e saídas através de vetores de estado, simulando obstáculos físicos de forma puramente lógica.
+- **Gerenciamento de Inventário e Recursos:** O agente coleta itens (como chaves) e consome energia a cada movimento, precisando escapar antes do esgotamento de suas forças.
+- **Lógica de Bloqueio Físico por Voltas:** Simulação de fechaduras mecânicas complexas que exigem iterações repetidas (ex: dar 3 ou 4 voltas na chave) para a liberação da rota.
 
+---
+
+## 🛠️ Tecnologias e Conceitos Aplicados
+O projeto foi construído utilizando os recursos nativos do Python 3.10+, explorando os seguintes conceitos:
+* **Estruturas de Repetição e Condicionais Avançadas:** Uso de laços `while` estruturados para estados de fuga e controle de fluxo com estruturas `match/case` (Pattern Matching).
+* **Matrizes e Listas Dinâmicas:** Armazenamento indexado para cruzamento de dados geoespaciais e condições ambientais.
+* **Modularização e Abstração:** Funções auxiliares específicas com responsabilidade única para cálculos de scores e conversões de dados.
+
+---
+
+## ⚙️ Como Executar
+
+### Pré-requisitos
+* Python 3.10 ou superior instalado (necessário para suporte ao `match/case`).
+
+### Passo a Passo
+1. Clone este repositório:
+   ```bash
+   git clone [https://github.com/WillV-Code/portfolio-williams-vargas-neves-paoli-dos-santos.git](https://github.com/WillV-Code/portfolio-williams-vargas-neves-paoli-dos-santos.git)
+
+```
+ 2. Acesse a pasta do projeto:
+   ```bash
+   cd portfolio-williams-vargas-neves-paoli-dos-santos
+   
+   ```
+ 3. Execute o script de análise de Microclima:
+   ```bash
+   python engenharia-de-contexto-e-logica-fisica-1.py
+   
+   ```
+ 4. Execute o script do Simulador de Fuga:
+   ```bash
+   python engenharia-de-contexto-e-logica-fisica-2.py
+   
+   ```
+> 💡 **Nota de Execução:** Ambos os scripts foram originalmente gerados e validados no ambiente **Google Colab**, sendo 100% compatíveis com Jupyter Notebooks.
+> 
+## 🧠 Lógica e Visão de Engenharia
+Diferente de sistemas puramente abstratos, estes scripts aplicam a lógica computacional rigorosa para resolver a falta de definição de passos do cotidiano.
+ * No **Script 1**, o contexto urbano é destrinchado em métricas de bem-estar, onde o computador calcula friamente o que seria um ambiente confortável através de thresholds bem definidos.
+ * No **Script 2**, o problema de uma rota de evacuação física é traduzido em dados puros (distância, estados de portas e travas), provando que cenários imprevisíveis podem ser antecipados e mitigados com uma estrutura robusta de *if/else* ("Se o corredor A estiver bloqueado, vá pelo corredor B").
+## 👤 Autor
+ * **Williams Vargas Neves Paoli dos Santos**
+ * GitHub: WillV-Code
+*Projeto focado na aplicação prática de lógica física, modelagem de contexto ambiental e estruturação algorítmica de problemas complexos.*
 ---
 [Voltar ao perfil](https://github.com/WillV-Code)
