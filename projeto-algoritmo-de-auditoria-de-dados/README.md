@@ -35,7 +35,6 @@ Além disso, o script oferece uma interface via terminal para que o auditor poss
    ```bash
    git clone [https://github.com/seu-usuario/nome-do-repositorio.git](https://github.com/seu-usuario/nome-do-repositorio.git)
 
-```
  2. **Navegue até o diretório do projeto:**
    ```bash
    cd projeto-algoritmo-de-auditoria-de-dados
