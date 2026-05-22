@@ -52,6 +52,7 @@ A persistência do teto de risco é mantida pela variável global limite_seguran
 ## 👤 Autor
  * **Williams Vargas Neves Paoli dos Santos**
  * GitHub: WillV-Code
+
 *Projeto focado na automação de processos de auditoria financeira e aplicação prática de lógica de programação.*
 
 [Voltar ao perfil](https://github.com/WillV-Code)
