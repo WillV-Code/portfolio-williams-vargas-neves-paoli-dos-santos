@@ -33,18 +33,20 @@ Este projeto foi construído utilizando exclusivamente a **Biblioteca Padrão do
    ```bash
    git clone [https://github.com/WillV-Code/portfolio-williams-vargas-neves-paoli-dos-santos.git](https://github.com/WillV-Code/portfolio-williams-vargas-neves-paoli-dos-santos.git)
 
-   ```
-2. Acesse a pasta do projeto:
+```
+ 2. Acesse a pasta do projeto:
    ```bash
    cd projeto-sistema-de-auditoria-de-recursos-corporativos
+   
    ```
-3. Execute o script principal:
+ 3. Execute o script principal:
    ```bash
    python sistema_auditoria.py
+   
    ```
-
-## 📊 Exemplo de Saída no Terminal
+### 📊 Exemplo de Saída no Terminal
 Ao executar o script com a configuração padrão do arquivo (ignorando "RH" e "Jurídico" com taxa de 5.20), a saída gerada será:
+```text
 --- Ínicio da Auditoria ---
 Função chamada: calcular_orcamento
 Args (posicionais): ({...}, 'RH', 'Jurídico')
@@ -55,12 +57,12 @@ Tempo de execução: 0.000032 segundos
 --- Fim da auditoria ---
 ORÇAMENTO TOTAL FINAL: 2,756,000.00
 
- 
+```
 ## 🧠 Estrutura de Dados do Projeto
-​Os dados simulados do ecossistema corporativo possuem a seguinte distribuição geográfica e departamental dentro do script:
-​Matriz: Divisões de TI (Infraestrutura, Desenvolvimento, Suporte), RH (Recrutamento, Treinamento, Cultura, Folha), Financeiro e Jurídico.
-​Filial_Brasil: Divisões de Comercial, Marketing e Operações.
-​Filial_Europa: Divisões de TI e Comercial.
+Os dados simulados do ecossistema corporativo possuem a seguinte distribuição geográfica e departamental dentro do script:
+ * **Matriz:** Divisões de TI (Infraestrutura, Desenvolvimento, Suporte), RH (Recrutamento, Treinamento, Cultura, Folha), Financeiro e Jurídico.
+ * **Filial_Brasil:** Divisões de Comercial, Marketing e Operações.
+ * **Filial_Europa:** Divisões de TI e Comercial.
 
 ## 👤 Autor
 * **Williams Vargas Neves Paoli dos Santos** • **LinkedIn: <https://www.linkedin.com/in/williams-paoli-98315b407>**
