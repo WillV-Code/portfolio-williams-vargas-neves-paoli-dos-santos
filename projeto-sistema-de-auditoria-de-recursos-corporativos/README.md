@@ -1,179 +1,53 @@
-# 🏪 Sistema Automático de Caixa e Decomposição de Troco
+# 💰 Sistema de Auditoria e Segurança de Vendas (Python)
 
 
 
-[![Status](https://img.shields.io/badge/status-conclu%C3%ADdo-brightgreen.svg)]()
+[![Python Version](https://img.shields.io/badge/python-3.x-blue.svg)](https://www.python.org/)
 
-
+[![Status](https://img.shields.io/badge/status-concluído-brightgreen.svg)]()
 
 ## 📖 Sobre o Projeto
 
-Este projeto consiste em um **Sistema de Validação de Pagamentos e Cálculo de Troco Otimizado**. O objetivo principal é simular o funcionamento de um terminal de caixa de autoatendimento ou PDV (Ponto de Venda), processando o valor total de uma compra, validando se o valor pago é suficiente e, caso haja troco, calculando a menor quantidade possível de cédulas necessárias para o cliente.
+Este projeto consiste em um script interativo desenvolvido em Python voltado para a auditoria, validação e monitoramento de dados financeiros de vendas. O sistema atua na garantia da integridade financeira do negócio através do cálculo de médias transacionais, identificação estatística de *outliers* e disparos automatizados de alertas de segurança.
 
 
 
-A solução foi projetada de forma modular e estruturada através de **Pseudocódigo (Portugal/Algoritmos)** e mapeada via **Fluxogramas**, aplicando as melhores práticas de divisão de responsabilidades, reutilização de código e estruturação lógica (funções e módulos).
+A solução oferece uma interface em linha de comando (CLI) que permite ao auditor inspecionar a tipagem dos dados em memória e redefinir dinamicamente os parâmetros de tolerância a riscos do sistema em tempo de execução.## 🚀 Funcionalidades- **Entrada de Dados Validada:** Coleta interativa via terminal estruturada para o processamento de lotes de vendas.- **Cálculo de Média Global:** Processamento aritmético instantâneo dos valores informados para consolidação de métricas.- **Mecanismo de Quarentena:** Alerta visual crítico (`SISTEMA EM QUARENTENA`) acionado automaticamente caso a média do lote ultrapasse o teto de segurança operacional.- **Detecção de Outliers:** Varredura algorítmica para identificar vendas individuais que superem em 5 vezes a média do lote, sinalizando a necessidade de revisão manual por discrepância.- **Ajuste Paramétrico Dinâmico:** Flexibilidade para o operador redefinir a variável global de limite de segurança (`limite_seguranca`) em tempo real caso uma transação legítima fure o bloqueio.- **Inspeção de Tipagem:** Exibição analítica final dos valores armazenados na lista e seus respectivos tipos primitivos de dados na memória.## 🛠️ Tecnologias e Conceitos Aplicados
 
+Este projeto foi construído utilizando a biblioteca padrão do Python, com foco nos seguintes conceitos de programação:* **Estruturas de Repetição e Condicionais:** Uso de laços `for` e blocos `if/elif/else` para controle de fluxo, validações e iteração de coleções.* **Manipulação de Escopo (`global`):** Aplicação de modificadores de escopo para permitir que funções modifiquem variáveis globais de controle em tempo de execução.* **Coleções Dinâmicas (Lists):** Armazenamento, persistência temporária e agregação de dados utilizando listas dinâmicas.## ⚙️ Como Executar### Pré-requisitos* Python 3.x instalado.### Passo a Passo1. Clone este repositório:
 
+   ```bash
 
-## 🚀 Funcionalidades
+   git clone [https://github.com/WillV-Code/portfolio-williams-vargas-neves-paoli-dos-santos.git](https://github.com/WillV-Code/portfolio-williams-vargas-neves-paoli-dos-santos.git)
+```
+Acesse a pasta do projeto:
 
-- **Validação de Pagamento:** Verifica de forma segura se o valor fornecido pelo cliente (`V_PAG`) é maior ou igual ao valor total da compra (`V_TOT`).
 
-- **Cálculo de Diferença (Troco):** Determina com precisão o valor exato a ser devolvido ao comprador.
 
-- **Decomposição Otimizada de Cédulas:** Algoritmo guloso que reduz o valor do troco dividindo-o pelas maiores denominações de notas disponíveis no sistema financeiro simulado (**R$ 100, R$ 50, R$ 10, R$ 5 e R$ 1**), minimizando o volume de cédulas entregues.
-
-- **Tratamento de Exceções Lógicas:** Caso o pagamento seja insuficiente, o fluxo interrompe a operação imediatamente e exibe uma mensagem amigável de erro.
-
-
-
-## 🛠️ Tecnologias e Conceitos Aplicados
-
-O projeto foi modelado utilizando técnicas fundamentais de engenharia de software e lógica de programação estruturada:
-
-
-
-- **Modularização (Funções com Retorno Multiplo):** Separação clara entre a captura de dados, validação de regras de negócio e cálculos matemáticos.
-
-- **Estruturas de Decisão (`SE / ENTAO / SENAO`):** Controle de fluxo condicional para direcionar o comportamento do sistema com base na validade do pagamento.
-
-- **Operadores de Divisão Inteira (`/`) e Resto (`%`):** Utilizados na função `CALC_RESTRITO_NOTA` para extrair a quantidade exata de notas de cada valor e atualizar o saldo remanescente do troco de forma iterativa.
-
-
-
-## 📐 Estrutura Modular (Arquitetura de Funções)
-
-
-
-O sistema é composto por 4 sub-rotinas principais que dividem o trabalho:
-
-
-
-1. **`VALIDAR_PAGAMENTO(V_PAG, V_TOT)`**:
-
-   - Retorna `VERDADEIRO` se `V_PAG >= V_TOT`.
-
-   - Retorna `FALSO` caso contrário.
-
-2. **`CALCULAR_TROCO(V_PAG, V_TOT)`**:
-
-   - Retorna a diferença aritmética simples: `V_PAG - V_TOT`.
-
-3. **`CALC_NOTA(TROCO, NOTA)`**:
-
-   - Calcula a quantidade (`QNT`) da nota atual via divisão inteira (`TROCO / NOTA`).
-
-   - Atualiza o `TROCO` restante usando a operação de módulo (`TROCO % NOTA`).
-
-   - Retorna ambos os valores atualizados.
-
-4. **`DECOMPOR_NOTAS(TROCO)`**:
-
-   - Orquestra chamadas sucessivas à função `CALC_NOTA` para as denominações de 100, 50, 10, 5 e 1.
-
-   - Retorna as quantidades de cada nota (`Q100, Q50, Q10, Q5, Q1`).
-
-
-
-## ⚙️ Como Executar
-
-
-
-### ✅ Pré-requisitos
-
-- Um interpretador de pseudocódigo (como o VisuAlg) ou qualquer ambiente/linguagem de programação moderna (Python, C, JavaScript) traduzindo a lógica apresentada.
-
-
-
-### ▶️ Algoritmo Principal (Pseudocódigo)
-
-
-
-```pascal
-
-INICIO
-
-    LER V_TOT
-
-    LER V_PAG
-
-    
-
-    VALIDO <- VALIDAR_PAGAMENTO(V_PAG, V_TOT)
-
-    
-
-    SE VALIDO = VERDADEIRO ENTAO
-
-        TROCO <- CALCULAR_TROCO(V_PAG, V_TOT)
-
-        (Q100, Q50, Q10, Q5, Q1) <- DECOMPOR_NOTAS(TROCO)
-
-        
-
-        MOSTRAR "TROCO: ", TROCO
-
-        MOSTRAR "NOTAS: "
-
-        MOSTRAR Q100, " NOTA(S) DE 100"
-
-        MOSTRAR Q50, " NOTA(S) DE 50"
-
-        MOSTRAR Q10, " NOTA(S) DE 10".
-
-        MOSTRAR Q5, " NOTA(S) DE 5"
-
-        MOSTRAR Q1, " NOTA(S) DE 1"
-
-    SENAO
-
-        MOSTRAR "VALOR PAGO INSUFICIENTE"
-
-    FIM_SE
-
-FIM
-
-📊 Exemplo de Saída no Terminal
-
-Cenário 1: Pagamento Válido com Troco Complexo
-
-Valor Total (V_TOT): R$ 133,00
-
-Valor Pago (V_PAG): R$ 300,00
-
-
-
-
-TROCO: 167.00
-
-NOTAS:
-
-1 NOTA(S) DE 100
-
-1 NOTA(S) DE 50
-
-1 NOTA(S) DE 10
-
-1 NOTA(S) DE 5
-
-2 NOTA(S) DE 1
-
-Cenário 2: Erro de Entrada
-
-Valor Total (V_TOT): R$ 50,00
-
-Valor Pago (V_PAG): R$ 45,00
-
-
-
-VALOR PAGO INSUFICIENTE
 
 ```
-## 👤 Autor
+cd projeto-algoritmo-de-auditoria-de-dados
+```
+Execute o script principal:
 
-Williams Vargas Neves Paoli dos Santos • LinkedIn: <https://www.linkedin.com/in/williams-paoli-98315b407>
 
-E-mail: williamspaoli1@gmail.com
 
-Projeto acadêmico focado em lógica de programação estruturada, modularização e design de algoritmos via fluxogramas.
+
+```
+python auditoria-de-dados.py
+```
+>💡 Nota de Execução: O script também é 100% compatível com ambientes de notebook como Google Colab ou Jupyter Notebook, bastando copiar e colar o código de auditoria-de-dados.py em uma célula de execução.
+
+🧠 Lógica e Estrutura do Código
+
+O script foi desenhado seguindo o paradigma de programação estruturada e modular. A captura dos dados é isolada inicialmente através de um laço que popula a lista dinâmica vendas. Uma vez consolidado o lote, a função analisar_vendas() assume o controle do fluxo, centralizando a lógica de negócio (cálculo de média e varredura de outliers) e gerenciando a interface de tomada de decisão do auditor.
+
+A persistência do teto de risco é mantida pela variável global limite_seguranca (inicializada em 10000), que pode ser sobrescrita de forma segura de dentro da função principal através do encapsulamento de escopo, garantindo previsibilidade ao script antes da rotina final de inspeção de tipos.
+
+👤 Autor
+
+**Williams Vargas Neves Paoli dos Santos**
+
+GitHub: <https://github.com/WillV-Code>
+
+Projeto focado na automação de processos de auditoria financeira e aplicação prática de lógica de programação.
