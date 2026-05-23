@@ -1,72 +1,179 @@
-# 🏢 Auditoria de Orçamentos Corporativos (Python)
- 
-[![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/)
-[![Status](https://img.shields.io/badge/status-concluído-brightgreen.svg)]()
- 
+# 🏪 Sistema Automático de Caixa e Decomposição de Troco
+
+
+
+[![Status](https://img.shields.io/badge/status-conclu%C3%ADdo-brightgreen.svg)]()
+
+
+
 ## 📖 Sobre o Projeto
-Este projeto consiste em um **Sistema de Auditoria de Recursos Corporativos** desenvolvido em Python. O objetivo principal é simular o ambiente financeiro de uma empresa multinacional, processando e calculando o orçamento total consolidado a partir de uma estrutura organizacional complexa e altamente aninhada (Matriz e Filiais).
 
-A solução foi projetada utilizando conceitos avançados do ecossistema Python para garantir **modularidade**, **rastreabilidade** e **separação de responsabilidades**, simulando boas práticas amplamente adotadas em sistemas backend de auditoria e governança corporativa.
- 
+Este projeto consiste em um **Sistema de Validação de Pagamentos e Cálculo de Troco Otimizado**. O objetivo principal é simular o funcionamento de um terminal de caixa de autoatendimento ou PDV (Ponto de Venda), processando o valor total de uma compra, validando se o valor pago é suficiente e, caso haja troco, calculando a menor quantidade possível de cédulas necessárias para o cliente.
+
+
+
+A solução foi projetada de forma modular e estruturada através de **Pseudocódigo (Portugal/Algoritmos)** e mapeada via **Fluxogramas**, aplicando as melhores práticas de divisão de responsabilidades, reutilização de código e estruturação lógica (funções e módulos).
+
+
+
 ## 🚀 Funcionalidades
-- **Cálculo Hierárquico Recursivo:** Varredura profunda na árvore de dados da empresa para consolidação dos orçamentos, independentemente do nível de aninhamento dos subdepartamentos.
-- **Filtros Dinâmicos de Escopo (`*args`):** Permite ignorar departamentos inteiros (e todas as suas ramificações) de forma dinâmica durante o cálculo.
-- **Conversão de Câmbio em Tempo de Execução (`**kwargs`):** Suporte nativo para aplicação de taxas de câmbio e definição de moedas de destino (`BRL`, `EUR`, etc.).
-- **Log de Auditoria Automatizado (Decorator):** Interceptação da função de cálculo para gerar logs detalhados contendo os parâmetros de entrada, o tempo de execução exato e a assinatura da função.
- 
+
+- **Validação de Pagamento:** Verifica de forma segura se o valor fornecido pelo cliente (`V_PAG`) é maior ou igual ao valor total da compra (`V_TOT`).
+
+- **Cálculo de Diferença (Troco):** Determina com precisão o valor exato a ser devolvido ao comprador.
+
+- **Decomposição Otimizada de Cédulas:** Algoritmo guloso que reduz o valor do troco dividindo-o pelas maiores denominações de notas disponíveis no sistema financeiro simulado (**R$ 100, R$ 50, R$ 10, R$ 5 e R$ 1**), minimizando o volume de cédulas entregues.
+
+- **Tratamento de Exceções Lógicas:** Caso o pagamento seja insuficiente, o fluxo interrompe a operação imediatamente e exibe uma mensagem amigável de erro.
+
+
+
 ## 🛠️ Tecnologias e Conceitos Aplicados
-Este projeto foi construído utilizando exclusivamente a **Biblioteca Padrão do Python (Standard Library)**, explorando os seguintes recursos:
 
-- **Decorators (`@auditor`):** Implementação de um decorador customizado acoplado à função principal. Utiliza `functools.wraps` para preservar os metadados da função original enquanto injeta a lógica de monitoramento e medição de tempo (`time.time()`).
+O projeto foi modelado utilizando técnicas fundamentais de engenharia de software e lógica de programação estruturada:
 
-- **Recursão Interna (`dicionario_percorrer`):** Uma função utilitária aninhada que navega pelas estruturas de dicionários (`isinstance(valor, dict)`), acumulando os valores numéricos (`int`, `float`) e aplicando as cláusulas de escape para setores ignorados.
 
-- **Argumentos Variádicos (`*args` e `**kwargs`):** Flexibilidade total na assinatura de `calcular_orcamento`, permitindo passar uma lista indefinida de exclusões e dicionários de configuração econômica de forma limpa.
- 
+
+- **Modularização (Funções com Retorno Multiplo):** Separação clara entre a captura de dados, validação de regras de negócio e cálculos matemáticos.
+
+- **Estruturas de Decisão (`SE / ENTAO / SENAO`):** Controle de fluxo condicional para direcionar o comportamento do sistema com base na validade do pagamento.
+
+- **Operadores de Divisão Inteira (`/`) e Resto (`%`):** Utilizados na função `CALC_RESTRITO_NOTA` para extrair a quantidade exata de notas de cada valor e atualizar o saldo remanescente do troco de forma iterativa.
+
+
+
+## 📐 Estrutura Modular (Arquitetura de Funções)
+
+
+
+O sistema é composto por 4 sub-rotinas principais que dividem o trabalho:
+
+
+
+1. **`VALIDAR_PAGAMENTO(V_PAG, V_TOT)`**:
+
+   - Retorna `VERDADEIRO` se `V_PAG >= V_TOT`.
+
+   - Retorna `FALSO` caso contrário.
+
+2. **`CALCULAR_TROCO(V_PAG, V_TOT)`**:
+
+   - Retorna a diferença aritmética simples: `V_PAG - V_TOT`.
+
+3. **`CALC_NOTA(TROCO, NOTA)`**:
+
+   - Calcula a quantidade (`QNT`) da nota atual via divisão inteira (`TROCO / NOTA`).
+
+   - Atualiza o `TROCO` restante usando a operação de módulo (`TROCO % NOTA`).
+
+   - Retorna ambos os valores atualizados.
+
+4. **`DECOMPOR_NOTAS(TROCO)`**:
+
+   - Orquestra chamadas sucessivas à função `CALC_NOTA` para as denominações de 100, 50, 10, 5 e 1.
+
+   - Retorna as quantidades de cada nota (`Q100, Q50, Q10, Q5, Q1`).
+
+
+
 ## ⚙️ Como Executar
- 
+
+
+
 ### ✅ Pré-requisitos
-- Python **3.8 ou superior** instalado.
- 
-### ▶️ Passo a Passo
-1. Clone este repositório:
-   ```bash
-   git clone [https://github.com/WillV-Code/portfolio-williams-vargas-neves-paoli-dos-santos.git](https://github.com/WillV-Code/portfolio-williams-vargas-neves-paoli-dos-santos.git)
+
+- Um interpretador de pseudocódigo (como o VisuAlg) ou qualquer ambiente/linguagem de programação moderna (Python, C, JavaScript) traduzindo a lógica apresentada.
+
+
+
+### ▶️ Algoritmo Principal (Pseudocódigo)
+
+
+
+```pascal
+
+INICIO
+
+    LER V_TOT
+
+    LER V_PAG
+
+    
+
+    VALIDO <- VALIDAR_PAGAMENTO(V_PAG, V_TOT)
+
+    
+
+    SE VALIDO = VERDADEIRO ENTAO
+
+        TROCO <- CALCULAR_TROCO(V_PAG, V_TOT)
+
+        (Q100, Q50, Q10, Q5, Q1) <- DECOMPOR_NOTAS(TROCO)
+
+        
+
+        MOSTRAR "TROCO: ", TROCO
+
+        MOSTRAR "NOTAS: "
+
+        MOSTRAR Q100, " NOTA(S) DE 100"
+
+        MOSTRAR Q50, " NOTA(S) DE 50"
+
+        MOSTRAR Q10, " NOTA(S) DE 10".
+
+        MOSTRAR Q5, " NOTA(S) DE 5"
+
+        MOSTRAR Q1, " NOTA(S) DE 1"
+
+    SENAO
+
+        MOSTRAR "VALOR PAGO INSUFICIENTE"
+
+    FIM_SE
+
+FIM
+
+📊 Exemplo de Saída no Terminal
+
+Cenário 1: Pagamento Válido com Troco Complexo
+
+Valor Total (V_TOT): R$ 133,00
+
+Valor Pago (V_PAG): R$ 300,00
+
+
+
+
+TROCO: 167.00
+
+NOTAS:
+
+1 NOTA(S) DE 100
+
+1 NOTA(S) DE 50
+
+1 NOTA(S) DE 10
+
+1 NOTA(S) DE 5
+
+2 NOTA(S) DE 1
+
+Cenário 2: Erro de Entrada
+
+Valor Total (V_TOT): R$ 50,00
+
+Valor Pago (V_PAG): R$ 45,00
+
+
+
+VALOR PAGO INSUFICIENTE
 
 ```
- 2. Acesse a pasta do projeto:
-   ```bash
-   cd projeto-sistema-de-auditoria-de-recursos-corporativos
-   
-   ```
- 3. Execute o script principal:
-   ```bash
-   python sistema_auditoria.py
-   
-   ```
-### 📊 Exemplo de Saída no Terminal
-Ao executar o script com a configuração padrão do arquivo (ignorando "RH" e "Jurídico" com taxa de 5.20), a saída gerada será:
-```text
---- Ínicio da Auditoria ---
-Função chamada: calcular_orcamento
-Args (posicionais): ({...}, 'RH', 'Jurídico')
-Kwargs (nomeados): {'taxa_cambio': 5.2, 'moeda_destino': 'BRL'}
-Moeda de destino: BRL
-Taxa de câmbio: 5.2
-Tempo de execução: 0.000032 segundos
---- Fim da auditoria ---
-ORÇAMENTO TOTAL FINAL: 2,756,000.00
-
-```
-## 🧠 Estrutura de Dados do Projeto
-Os dados simulados do ecossistema corporativo possuem a seguinte distribuição geográfica e departamental dentro do script:
- * **Matriz:** Divisões de TI (Infraestrutura, Desenvolvimento, Suporte), RH (Recrutamento, Treinamento, Cultura, Folha), Financeiro e Jurídico.
- * **Filial_Brasil:** Divisões de Comercial, Marketing e Operações.
- * **Filial_Europa:** Divisões de TI e Comercial.
-
 ## 👤 Autor
-* **Williams Vargas Neves Paoli dos Santos** • **LinkedIn: <https://www.linkedin.com/in/williams-paoli-98315b407>**
-* E-mail: williamspaoli1@gmail.com
- 
----
-*Projeto acadêmico com foco na aplicação prática de conceitos avançados da linguagem Python.*
+
+Williams Vargas Neves Paoli dos Santos • LinkedIn: <https://www.linkedin.com/in/williams-paoli-98315b407>
+
+E-mail: williamspaoli1@gmail.com
+
+Projeto acadêmico focado em lógica de programação estruturada, modularização e design de algoritmos via fluxogramas.
